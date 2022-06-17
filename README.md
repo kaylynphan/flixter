@@ -2,7 +2,7 @@
 
 **Flixter** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-
+<img src="https://i.imgur.com/m7JdCGy.gif" width=150px/>
 
 Time spent: **21** hours spent in total
 
