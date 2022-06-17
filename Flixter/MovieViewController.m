@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray *movies;
 @property (strong, nonatomic) NSArray *filteredData;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -32,6 +33,16 @@
 
 - (void) fetchMovies {
     self.filteredData = self.movies;
+    
+    UIAlertController *networkAlert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self fetchMovies];
+    }];
+    
+    [networkAlert addAction:tryAgainAction];
+    
+    [self.activityIndicator startAnimating];
 
     // 1. Create URL
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=d1b12d7f1cc97f737543dc49de2d5f0d"];
@@ -47,6 +58,12 @@
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
             NSLog(@"%@", [error localizedDescription]);
+            
+            [self presentViewController:networkAlert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+            
+            [self.activityIndicator stopAnimating];
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -61,7 +78,7 @@
             // expected to get this information from itself
             
             [self.tableView reloadData];
-               
+            [self.activityIndicator stopAnimating];
         }
     }];
     
@@ -138,6 +155,9 @@
     [task resume];
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark - Navigation
 
