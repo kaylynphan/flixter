@@ -2,6 +2,8 @@
 
 **Flixter** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
+
+
 Time spent: **21** hours spent in total
 
 ## User Stories
@@ -12,13 +14,13 @@ The following **required** functionality is complete:
 - [x] User can view a list of movies currently playing in theaters from The Movie Database.
 - [x] Poster images are loaded using the UIImageView category in the AFNetworking library.
 - [x] User sees a loading state while waiting for the movies API.
-- [ ] User can pull to refresh the movie list.
-- [ ] User sees an error message when there's a networking error.
-- [ ] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
+- [x] User can pull to refresh the movie list.
+- [x] User sees an error message when there's a networking error.
+- [x] User can tap a tab bar button to view a grid layout of Movie Posters using a CollectionView.
 
 The following **optional** features are implemented:
 
-- [ ] User can tap a poster in the collection view to see a detail screen of that movie
+- [x] User can tap a poster in the collection view to see a detail screen of that movie
 - [ ] User can search for a movie.
 - [ ] All images fade in as they are loading.
 - [ ] User can view the large movie poster by tapping on a cell.
@@ -30,12 +32,13 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] User can refresh on collection view.
+- [x] Movie cell in table view is highlighted upon click and un-highlighted after click.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. I would like to talk about ways we can better format the text and layout of the UI.
+2. I would like to talk about a possible improvement which is sorting movies by alphabetical order, popularity, etc.
 
 ## Video Walkthrough
 
