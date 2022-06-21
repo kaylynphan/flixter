@@ -23,6 +23,7 @@
 		2E9CBA07285D11AF00E84F94 /* MovieCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CBA06285D11AF00E84F94 /* MovieCollectionViewCell.m */; };
 		2E9CBA0A285D126D00E84F94 /* GridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CBA09285D126D00E84F94 /* GridViewController.m */; };
 		2E9CBA15286233E300E84F94 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CBA14286233E300E84F94 /* Movie.m */; };
+		2E9CBA1B28623EC800E84F94 /* MovieAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E9CBA1A28623EC800E84F94 /* MovieAPIManager.m */; };
 		B3778465E2A6DEC17A6A8EF8 /* Pods_Flixter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F0DCF6E9655362828564C2 /* Pods_Flixter.framework */; };
 		E86C17DA8D9B094B3F19EF04 /* Pods_FlixterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A10C9954EFEEB42F90552E1 /* Pods_FlixterTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,8 @@
 		2E9CBA09285D126D00E84F94 /* GridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GridViewController.m; sourceTree = "<group>"; };
 		2E9CBA13286233E300E84F94 /* Movie.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		2E9CBA14286233E300E84F94 /* Movie.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		2E9CBA1928623EC800E84F94 /* MovieAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieAPIManager.h; sourceTree = "<group>"; };
+		2E9CBA1A28623EC800E84F94 /* MovieAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieAPIManager.m; sourceTree = "<group>"; };
 		50595ACF752AD59A04DC0BD2 /* Pods-Flixter-FlixterUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixter-FlixterUITests.debug.xcconfig"; path = "Target Support Files/Pods-Flixter-FlixterUITests/Pods-Flixter-FlixterUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		59CB08E85E7058766704F156 /* Pods-FlixterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlixterTests.debug.xcconfig"; path = "Target Support Files/Pods-FlixterTests/Pods-FlixterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		62522A30BDB269B4585A32D8 /* Pods-Flixter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flixter.debug.xcconfig"; path = "Target Support Files/Pods-Flixter/Pods-Flixter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +166,8 @@
 				2E9CBA01285BE14F00E84F94 /* DetailsViewController.h */,
 				2E9CBA02285BE14F00E84F94 /* DetailsViewController.m */,
 				2E2A102D285A4C8100D4BEF1 /* Main.storyboard */,
+				2E9CBA1928623EC800E84F94 /* MovieAPIManager.h */,
+				2E9CBA1A28623EC800E84F94 /* MovieAPIManager.m */,
 				2E9CBA08285D126D00E84F94 /* GridViewController.h */,
 				2E9CBA09285D126D00E84F94 /* GridViewController.m */,
 				2E2A1030285A4C8200D4BEF1 /* Assets.xcassets */,
@@ -442,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E2A105B285A511F00D4BEF1 /* MovieViewController.m in Sources */,
+				2E9CBA1B28623EC800E84F94 /* MovieAPIManager.m in Sources */,
 				2E9CBA00285BCE3B00E84F94 /* MovieCell.m in Sources */,
 				2E2A1026285A4C8100D4BEF1 /* AppDelegate.m in Sources */,
 				2E9CBA03285BE14F00E84F94 /* DetailsViewController.m in Sources */,

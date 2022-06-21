@@ -9,6 +9,7 @@
 #import "MovieCell.h"
 #import "DetailsViewController.h"
 #import "Movie.h"
+#import "MovieAPIManager.h"
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -44,6 +45,15 @@
     [networkAlert addAction:tryAgainAction];
     
     [self.activityIndicator startAnimating];
+    
+    // new is an alternative syntax to calling alloc init.
+    MovieAPIManager *manager = [MovieAPIManager new];
+    [manager fetchNowPlaying:^(NSArray *movies, NSError *error) {
+        self.movies = movies;
+        [self.tableView reloadData];
+    }];
+    
+    
 
     // 1. Create URL
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=d1b12d7f1cc97f737543dc49de2d5f0d"];
@@ -78,11 +88,16 @@
              */
             
             NSArray *dictionaries = dataDictionary[@"results"];
+            
+            /*
             for (NSDictionary *dictionary in dictionaries) {
                 //NSLog(@"%@", dictionary); // this is good
                 Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
                 [self.movies addObject:movie];
             }
+            */
+            
+            self.movies = [Movie moviesWithDictionaries:dictionaries];
             NSLog(@"%@", self.movies);
                
             // expected to get this information from itself
@@ -110,6 +125,7 @@
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
+    /*
     Movie *movie = self.movies[indexPath.row];
     cell.titleLabel.text = movie.title;
     cell.synopsisLabel.text = movie.synopsis;
@@ -117,6 +133,9 @@
     cell.posterImage.image = nil;
     NSData * imageData = [[NSData alloc] initWithContentsOfURL: movie.posterUrl];
     cell.posterImage.image = [UIImage imageWithData: imageData];
+     */
+    
+    cell.movie = self.movies[indexPath.row];
     return cell;
 }
 
