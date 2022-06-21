@@ -8,12 +8,13 @@
 #import "MovieViewController.h"
 #import "MovieCell.h"
 #import "DetailsViewController.h"
+#import "Movie.h"
 
 @interface MovieViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray *movies;
-@property (strong, nonatomic) NSArray *filteredData;
+@property (nonatomic, strong) NSMutableArray *movies;
+@property (strong, nonatomic) NSMutableArray *filteredData;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end
@@ -71,9 +72,18 @@
             // TODO: Get the array of movies
             // TODO: Store the movies in a property to use elsewhere
             // TODO: Reload your table view data
-            self.movies = dataDictionary[@"results"];
+            /*self.movies = dataDictionary[@"results"];
             self.filteredData = dataDictionary[@"results"];
             NSLog(@"%@", dataDictionary);
+             */
+            
+            NSArray *dictionaries = dataDictionary[@"results"];
+            for (NSDictionary *dictionary in dictionaries) {
+                //NSLog(@"%@", dictionary); // this is good
+                Movie *movie = [[Movie alloc] initWithDictionary:dictionary];
+                [self.movies addObject:movie];
+            }
+            NSLog(@"%@", self.movies);
                
             // expected to get this information from itself
             
@@ -100,14 +110,13 @@
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.row];
-    cell.titleLabel.text = movie[@"title"];
-    cell.synopsisLabel.text = movie[@"overview"];
-    NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
+    Movie *movie = self.movies[indexPath.row];
+    cell.titleLabel.text = @"Hello";//= movie.title;
+    cell.synopsisLabel.text = movie.synopsis;
+    //NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
     cell.posterImage.image = nil;
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: posterURLString]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: movie.posterUrl];
     cell.posterImage.image = [UIImage imageWithData: imageData];
-   
     return cell;
 }
 
