@@ -17,11 +17,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.titleLabel.text = self.data[@"title"];
-    self.synopsisLabel.text = self.data[@"overview"];
-    NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.data[@"poster_path"]];
+    self.titleLabel.text = self.data.title;
+    self.synopsisLabel.text = self.data.synopsis;
+    //NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:self.data[@"poster_path"]];
     self.posterImage.image = nil;
-    NSData * imageData = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: posterURLString]];
+    NSData * imageData = [[NSData alloc] initWithContentsOfURL: self.data.posterUrl];
     self.posterImage.image = [UIImage imageWithData: imageData];
 }
 

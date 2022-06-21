@@ -27,7 +27,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 200;
-    
+    self.movies = [[NSMutableArray alloc] init];
     [self fetchMovies];
 }
 
@@ -111,7 +111,7 @@
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell" forIndexPath:indexPath];
     
     Movie *movie = self.movies[indexPath.row];
-    cell.titleLabel.text = @"Hello";//= movie.title;
+    cell.titleLabel.text = movie.title;
     cell.synopsisLabel.text = movie.synopsis;
     //NSString *posterURLString = [@"https://image.tmdb.org/t/p/w500" stringByAppendingString:movie[@"poster_path"]];
     cell.posterImage.image = nil;
@@ -175,7 +175,7 @@
     UITableViewCell *cell = sender;
     NSIndexPath *myIndexPath = [self.tableView indexPathForCell:cell];
     // Get the new view controller using [segue destinationViewController].
-    NSDictionary *dataToPass = self.filteredData[myIndexPath.row];
+    Movie *dataToPass = self.movies[myIndexPath.row];
     // Pass the selected object to the new view controller.
     DetailsViewController *detailVC = [segue destinationViewController];
     detailVC.data = dataToPass;
